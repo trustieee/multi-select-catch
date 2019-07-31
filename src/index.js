@@ -1,30 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import CatchMultiSelect from './multiselect/CatchMultiSelect';
-import './app.css';
+import Sample from './sample/Sample';
 
-function App() {
-  const [options, setOptions] = useState([]);
-
-  useEffect(() => {
-    fetch('/names')
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json();
-        }
-        throw new Error('invalid response:' + resp);
-      })
-      .then(setOptions)
-      .catch(reason => {
-        console.log('erorr happened:----| ' + reason);
-      });
-  }, []);
-
-  return (
-    <div id="test-container">
-      <CatchMultiSelect options={options || ['loading...']} />
-    </div>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Sample />, document.getElementById('root'));
