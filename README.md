@@ -9,3 +9,5 @@ Features:
 - Removal of selected items
 
 > To obtain, clone this repo. It is not on npm registry.
+
+![sample](https://github.com/mariocatch/multi-select-catch/raw/master/src/sample/sample.gif)
