@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import CatchMultiSelect from './multiselect/CatchMultiSelect';
+import './app.css';
+
+function App() {
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    fetch('/names')
+      .then(resp => {
+        if (resp.ok) {
+          return resp.json();
+        }
+        throw new Error('invalid response:' + resp);
+      })
+      .then(setOptions)
+      .catch(reason => {
+        console.log('erorr happened:----| ' + reason);
+      });
+  }, []);
+
+  return (
+    <div id="test-container">
+      <CatchMultiSelect options={options || ['loading...']} />
+    </div>
+  );
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

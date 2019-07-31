@@ -1,0 +1,8 @@
+.catch-option-inside-input {
+  margin-left: 10px;
+  display: flex;
+}
+
+.catch-option-inside-input > button {
+  margin-left: 3px;
+}
